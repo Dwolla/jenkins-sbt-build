@@ -4,7 +4,6 @@ MAINTAINER Dwolla Engineering <dev+docker@dwolla.com>
 ENV HOME /home/jenkins
 
 ADD jenkins-slave /usr/local/bin/jenkins-slave
-ADD wrapdocker /usr/local/bin/wrapdocker
 
 RUN export JAVA_HOME=$(dirname $(dirname `realpath /etc/alternatives/java`)) && \
     sed -i s/#networkaddress.cache.ttl=-1/networkaddress.cache.ttl=60/ $JAVA_HOME/lib/security/java.security && \
@@ -22,9 +21,8 @@ RUN export JAVA_HOME=$(dirname $(dirname `realpath /etc/alternatives/java`)) && 
     chmod 644 /usr/share/jenkins/slave.jar && \
     useradd -c "Jenkins user" -d $HOME -m jenkins && \
     usermod -a -G docker jenkins && \
-    chmod 755 /usr/local/bin/wrapdocker /usr/local/bin/jenkins-slave
+    chmod 755 /usr/local/bin/jenkins-slave
 
-VOLUME /var/lib/docker
 VOLUME /home/jenkins
 WORKDIR /home/jenkins
 USER jenkins

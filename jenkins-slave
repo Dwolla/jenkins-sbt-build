@@ -45,8 +45,6 @@ else
 		URL="-url $JENKINS_URL"
 	fi
 
-    /usr/local/bin/wrapdocker &
-    
 	exec java $JAVA_OPTS -cp /usr/share/jenkins/slave.jar hudson.remoting.jnlp.Main -headless $TUNNEL $URL "$@"
 fi
 
