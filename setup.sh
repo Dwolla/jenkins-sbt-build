@@ -18,7 +18,7 @@ apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 642AC823
 
 # Install dependencies
 apt-get update
-apt-get install -y docker-engine sbt curl
+apt-get install -y docker-engine=1.9.1-0~jessie sbt curl
 sbt version
 
 # Install Jenkins jars
