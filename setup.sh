@@ -22,7 +22,7 @@ apt-get install -y docker-engine=1.9.1-0~jessie sbt curl
 sbt version
 
 # Install Jenkins jars
-curl --create-dirs -sSLo /usr/share/jenkins/slave.jar https://repo.jenkins-ci.org/public/org/jenkins-ci/main/remoting/2.53.2/remoting-2.53.2.jar
+curl --create-dirs -sSLo /usr/share/jenkins/slave.jar https://repo.jenkins-ci.org/public/org/jenkins-ci/main/remoting/2.56/remoting-2.56.jar
 chmod 755 /usr/share/jenkins
 chmod 644 /usr/share/jenkins/slave.jar
 
