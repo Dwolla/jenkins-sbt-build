@@ -1,4 +1,5 @@
-#!/bin/sh
+#!/bin/bash
+set -o pipefail -o nounset -o errexit
 
 # Disable DNS caching in Java security
 export JAVA_HOME=$(dirname $(dirname `realpath /etc/alternatives/java`))
@@ -19,13 +20,13 @@ apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 642AC823
 # Install dependencies
 apt-get update
 apt-get install -y docker-engine=1.9.1-0~jessie sbt curl
-sbt version
 
 # Install Jenkins jars
 curl --create-dirs -sSLo /usr/share/jenkins/slave.jar https://repo.jenkins-ci.org/public/org/jenkins-ci/main/remoting/2.56/remoting-2.56.jar
 chmod 755 /usr/share/jenkins
 chmod 644 /usr/share/jenkins/slave.jar
 
+# Set up Jenkins user
 useradd -c "Jenkins user" -d $HOME -m jenkins
 usermod -a -G docker jenkins
 chmod 755 /usr/local/bin/jenkins-slave
